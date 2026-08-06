@@ -46,7 +46,7 @@ export function Nav() {
             <span className="h-3.5 w-3.5 rotate-45 border border-gold" />
           </span>
           <span className="min-w-0">
-            <span className="block truncate font-display text-[0.95rem] leading-tight font-bold tracking-tight text-navy">
+            <span className="block truncate font-display text-[0.95rem] leading-tight font-bold tracking-[0.04em] text-navy">
               COMPANY NAME
             </span>
             <span className="block truncate text-[0.6rem] tracking-[0.24em] text-muted-foreground uppercase">

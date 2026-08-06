@@ -25,7 +25,7 @@ export function Footer() {
                 <span className="h-3.5 w-3.5 rotate-45 border border-gold" />
               </span>
               <span>
-                <span className="block font-display text-[0.95rem] leading-tight font-bold text-white">
+                <span className="block font-display text-[0.95rem] leading-tight font-bold tracking-[0.04em] text-white">
                   COMPANY NAME
                 </span>
                 <span className="block text-[0.6rem] tracking-[0.24em] text-white/45 uppercase">
