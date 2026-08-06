@@ -80,8 +80,8 @@ export function Projects() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              src={projects[active].img}
-              alt={projects[active].title}
+              src={projects[active]?.img}
+              alt={projects[active]?.title ?? ""}
               className="max-h-[82vh] w-auto max-w-full rounded-[18px] object-contain"
             />
           </motion.div>
