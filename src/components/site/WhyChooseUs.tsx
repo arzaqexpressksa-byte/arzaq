@@ -1,4 +1,3 @@
-<<<<<<<
 import { Section, SectionHeading } from "./Section";
 import { Reveal } from "./Reveal";
 import { Compass, HardHat, LineChart, Layers, Clock, Lock } from "lucide-react";
