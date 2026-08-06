@@ -245,3 +245,53 @@
 @utility scan-line {
   animation: scan-y 9s linear infinite;
 }
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  height: 3.25rem;
+  padding-inline: 1.75rem;
+  border-radius: 2px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+@utility btn-solid {
+  background: var(--navy);
+  color: white;
+
+  &:hover {
+    background: var(--gold);
+  }
+}
+
+@utility btn-ghost {
+  border: 1px solid color-mix(in oklab, var(--navy) 22%, transparent);
+  color: var(--navy);
+
+  &:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+}
+
+@utility btn-invert {
+  border: 1px solid rgb(255 255 255 / 0.28);
+  color: white;
+
+  &:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+}
