@@ -37,19 +37,34 @@ export function Nav() {
         "fixed inset-x-0 top-0 z-50 border-b transition-all duration-500",
         scrolled
           ? "border-border bg-background/90 shadow-[0_1px_24px_-12px_rgba(11,31,51,0.35)] backdrop-blur-xl"
-          : "border-transparent bg-background/70 backdrop-blur-sm",
+          : "border-white/10 bg-navy/20 backdrop-blur-[2px]",
       )}
     >
       <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8 lg:grid-cols-[auto_1fr_auto] lg:px-12">
         <a href="#home" className="flex min-w-0 items-center gap-3">
-          <span className="grid h-10 w-10 shrink-0 place-items-center border border-navy/15">
+          <span
+            className={cn(
+              "grid h-10 w-10 shrink-0 place-items-center border",
+              scrolled ? "border-navy/15" : "border-white/25",
+            )}
+          >
             <span className="h-3.5 w-3.5 rotate-45 border border-gold" />
           </span>
           <span className="min-w-0">
-            <span className="block truncate font-display text-[0.95rem] leading-tight font-bold tracking-[0.04em] text-navy">
+            <span
+              className={cn(
+                "block truncate font-display text-[0.95rem] leading-tight font-bold tracking-[0.04em]",
+                scrolled ? "text-navy" : "text-white",
+              )}
+            >
               COMPANY NAME
             </span>
-            <span className="block truncate text-[0.6rem] tracking-[0.24em] text-muted-foreground uppercase">
+            <span
+              className={cn(
+                "block truncate text-[0.6rem] tracking-[0.24em] uppercase",
+                scrolled ? "text-muted-foreground" : "text-white/60",
+              )}
+            >
               Industrial Est.
             </span>
           </span>
@@ -60,7 +75,10 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="relative py-1 text-[0.8rem] font-medium tracking-wide text-charcoal/75 transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:text-navy hover:after:origin-left hover:after:scale-x-100"
+              className={cn(
+                "relative py-1 text-[0.8rem] font-medium tracking-wide transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
+                scrolled ? "text-charcoal/75 hover:text-navy" : "text-white/80 hover:text-white",
+              )}
             >
               {l.label}
             </a>
@@ -68,7 +86,13 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center justify-end gap-2">
-          <a href="#contact" className="btn-base btn-solid hidden h-11 px-6 text-[0.7rem] sm:inline-flex">
+          <a
+            href="#contact"
+            className={cn(
+              "btn-base hidden h-11 px-6 text-[0.7rem] sm:inline-flex",
+              scrolled ? "btn-solid" : "bg-white text-navy hover:bg-gold hover:text-white",
+            )}
+          >
             Request a Quote
           </a>
           <button
@@ -76,7 +100,10 @@ export function Nav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 shrink-0 place-items-center border border-navy/15 text-navy transition-colors hover:border-gold hover:text-gold lg:hidden"
+            className={cn(
+              "grid h-11 w-11 shrink-0 place-items-center border transition-colors hover:border-gold hover:text-gold lg:hidden",
+              scrolled ? "border-navy/15 text-navy" : "border-white/25 text-white",
+            )}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
