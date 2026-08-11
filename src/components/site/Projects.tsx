@@ -108,32 +108,32 @@ export function Projects() {
 
       {/* Lightbox Modal using shadcn Dialog */}
       <Dialog open={active !== null} onOpenChange={(open) => !open && setActive(null)}>
-        {active !== null && (
+        {active !== null && projects[active] && (
           <DialogContent className="max-w-3xl bg-slate-950 border-slate-800 text-white">
             <DialogHeader>
               <div className="flex items-center gap-2">
                 <Badge variant="outline" className="border-amber-500/40 text-amber-400 bg-amber-500/10">
-                  {projects[active].category}
+                  {projects[active]!.category}
                 </Badge>
               </div>
               <DialogTitle className="text-xl font-bold text-white mt-1">
-                {projects[active].title}
+                {projects[active]!.title}
               </DialogTitle>
               <DialogDescription className="text-slate-400 text-xs sm:text-sm">
-                {projects[active].meta}
+                {projects[active]!.meta}
               </DialogDescription>
             </DialogHeader>
 
             <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-900 border border-slate-800 my-2">
               <img
-                src={projects[active].img}
-                alt={projects[active].title}
+                src={projects[active]!.img}
+                alt={projects[active]!.title}
                 className="h-full w-full object-cover"
               />
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              {projects[active].details}
+              {projects[active]!.details}
             </p>
           </DialogContent>
         )}
