@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Circle backing for contrast in browser tabs -->
+  <circle cx="60" cy="60" r="58" fill="#0C2340" />
+  
+  <!-- Outer Orange Circular Ring Accent -->
+  <circle
+    cx="60"
+    cy="60"
+    r="52"
+    stroke="url(#orangeGrad)"
+    stroke-width="5"
+    fill="none"
+    stroke-dasharray="230 70"
+    stroke-linecap="round"
+  />
+  
+  <!-- Inner White Circular Frame -->
+  <circle
+    cx="60"
+    cy="60"
+    r="45"
+    stroke="#FFFFFF"
+    stroke-width="2"
+    fill="none"
+  />
+
+  <!-- Safety Helmet Icon over letter 'A' -->
+  <path
+    d="M 36 38 C 36 29 46 24 55 24 C 64 24 74 29 74 38 L 77 38 L 77 41 L 33 41 L 33 38 Z"
+    fill="#F36F21"
+  />
+  <path
+    d="M 52 24 L 52 30 M 58 24 L 58 30"
+    stroke="#FFFFFF"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+
+  <!-- Stylized 'A' in Orange -->
+  <path
+    d="M 33 80 L 51 36 L 63 36 L 52 80 Z"
+    fill="url(#orangeGrad)"
+  />
+  <!-- Crossbar of 'A' -->
+  <path
+    d="M 40 64 L 68 64 L 64 72 L 37 72 Z"
+    fill="#F36F21"
+  />
+
+  <!-- Stylized 'E' in White -->
+  <path
+    d="M 56 36 L 87 36 L 87 46 L 67 46 L 67 53 L 83 53 L 83 62 L 67 62 L 67 70 L 89 70 L 89 80 L 56 80 Z"
+    fill="#FFFFFF"
+  />
+
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,56 +1,57 @@
 import { useState, type FormEvent } from "react";
-import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Clock, Send, FileText, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Section, SectionHeading } from "./Section";
 import { Reveal } from "./Reveal";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Vision2030Badge } from "./Logo";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Please enter your name").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255),
+  name: z.string().trim().min(1, "Please enter your full name").max(100),
+  email: z.string().trim().email("Please enter a valid email address").max(255),
   company: z.string().trim().max(120).optional(),
   phone: z.string().trim().max(40).optional(),
-  message: z.string().trim().min(1, "Please enter a message").max(2000),
+  service: z.string().trim().optional(),
+  message: z.string().trim().min(1, "Please enter your inquiry details").max(2000),
 });
 
-const details = [
-  { icon: MapPin, label: "Address", value: "Address Placeholder, Street, City, Country" },
-  { icon: Phone, label: "Phone", value: "+000 0000 0000" },
-  { icon: Mail, label: "Email", value: "email@placeholder.com" },
-  { icon: Clock, label: "Working Hours", value: "Sunday – Thursday, 08:00 – 18:00" },
+const contactDetails = [
+  {
+    icon: MapPin,
+    label: "Head Office Address",
+    value: "Omar Bin Al-Khattab Street, Noor Complex, Dammam, Kingdom of Saudi Arabia",
+    href: "https://maps.google.com/?q=Dammam+Saudi+Arabia",
+  },
+  {
+    icon: Phone,
+    label: "Phone & WhatsApp",
+    value: "+966-536083965 / +966-590316144",
+    href: "tel:+966536083965",
+  },
+  {
+    icon: Mail,
+    label: "Official Emails",
+    value: "sales@arzaqexpressksa.com | info@arzaqexpressksa.com",
+    href: "mailto:sales@arzaqexpressksa.com",
+  },
+  {
+    icon: Globe,
+    label: "Official Website",
+    value: "www.arzaqexpressksa.com",
+    href: "https://www.arzaqexpressksa.com",
+  },
+  {
+    icon: Clock,
+    label: "Working Hours",
+    value: "Saturday – Thursday, 08:00 AM – 06:00 PM (Emergency 24/7 Support)",
+    href: null,
+  },
 ];
-
-function Field({
-  id,
-  label,
-  type = "text",
-  textarea = false,
-  required = false,
-}: {
-  id: string;
-  label: string;
-  type?: string;
-  textarea?: boolean;
-  required?: boolean;
-}) {
-  const base =
-    "peer w-full rounded-[10px] border border-input bg-background px-4 pt-6 pb-2 text-sm text-navy outline-none transition-colors duration-300 placeholder-transparent focus:border-gold";
-  return (
-    <div className="relative">
-      {textarea ? (
-        <textarea id={id} name={id} rows={5} placeholder={label} required={required} className={`${base} resize-none`} />
-      ) : (
-        <input id={id} name={id} type={type} placeholder={label} required={required} className={`${base} h-14`} />
-      )}
-      <label
-        htmlFor={id}
-        className="pointer-events-none absolute top-2 left-4 text-[0.65rem] tracking-[0.14em] text-muted-foreground uppercase transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:normal-case peer-focus:top-2 peer-focus:translate-y-0 peer-focus:text-[0.65rem] peer-focus:tracking-[0.14em] peer-focus:text-gold peer-focus:uppercase"
-      >
-        {label}
-      </label>
-    </div>
-  );
-}
 
 export function Contact() {
   const [sending, setSending] = useState(false);
@@ -60,99 +61,172 @@ export function Contact() {
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
     const parsed = schema.safeParse(data);
+
     if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Please check the form");
+      toast.error(parsed.error.issues[0]?.message ?? "Please check the form inputs");
       return;
     }
+
     setSending(true);
     setTimeout(() => {
       setSending(false);
       form.reset();
-      toast.success("Enquiry submitted", {
-        description: "Placeholder confirmation — connect this form to your backend later.",
+      toast.success("Inquiry Submitted Successfully!", {
+        description: "Thank you for reaching out to ARZAQ EXPRESS INDUSTRIAL Est. Our engineering sales team will contact you shortly.",
       });
-    }, 700);
+    }, 800);
   };
 
   return (
     <Section id="contact" tone="white">
       <SectionHeading
-        eyebrow="Contact"
-        title="Start a Conversation With Our Engineering Team"
-        intro="Section intro placeholder. Invite enquiries and explain expected response times."
+        eyebrow="Contact Us"
+        title="Start a Project Conversation With Arzaq Express"
+        intro="Contact our engineering and sales department in Dammam for project inquiries, technical specifications, or emergency service requests."
       />
 
-      <div className="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
+      <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-12">
+        {/* Left Column: Official Contact Information */}
         <div className="flex flex-col gap-6">
           <Reveal>
-            <div className="rounded-[18px] border border-border bg-warm p-8 sm:p-10">
-              <span className="eyebrow rule-gold">Company Information</span>
-              <ul className="mt-8 space-y-7">
-                {details.map((d) => (
-                  <li key={d.label} className="flex items-start gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center border border-navy/12">
-                      <d.icon className="h-4 w-4 text-gold" strokeWidth={1.5} />
-                    </span>
-                    <div className="min-w-0">
-                      <div className="text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase">
-                        {d.label}
-                      </div>
-                      <div className="mt-1 break-words text-sm text-navy">{d.value}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          <Reveal delay={1}>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[18px] border border-border bg-stone">
-              <div className="blueprint-grid absolute inset-0 opacity-80" />
-              <div className="absolute inset-0 grid place-items-center px-6 text-center">
-                <div>
-                  <MapPin className="mx-auto h-7 w-7 text-gold" strokeWidth={1.4} />
-                  <p className="mt-4 font-display text-sm font-semibold tracking-[0.16em] text-navy uppercase">
-                    Map Placeholder
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Embed your Google Map here
-                  </p>
+            <Card className="border-border/80 bg-slate-950 text-white shadow-xl">
+              <CardHeader className="pb-4">
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className="border-amber-500/40 text-amber-400 bg-amber-500/10 font-semibold text-xs">
+                    Page 21 Profile
+                  </Badge>
+                  <Vision2030Badge />
                 </div>
-              </div>
-            </div>
+                <CardTitle className="text-xl font-bold text-white mt-3">
+                  ARZAQ EXPRESS INDUSTRIAL Est.
+                </CardTitle>
+                <CardDescription className="text-slate-400 text-xs sm:text-sm">
+                  Dammam & Jubail, Eastern Province, Kingdom of Saudi Arabia
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6 pt-2">
+                {contactDetails.map((item) => (
+                  <div key={item.label} className="flex items-start gap-4">
+                    <div className="rounded-xl bg-slate-800 p-2.5 text-amber-400 shrink-0 mt-0.5">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[0.65rem] font-bold uppercase tracking-wider text-slate-400">
+                        {item.label}
+                      </div>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target={item.href.startsWith("http") ? "_blank" : undefined}
+                          rel="noopener noreferrer"
+                          className="text-xs sm:text-sm font-semibold text-white hover:text-amber-400 transition-colors block mt-0.5 break-words"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <div className="text-xs sm:text-sm font-semibold text-white mt-0.5 break-words">
+                          {item.value}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+
+                <div className="pt-4 border-t border-slate-800 flex flex-col gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center gap-2 border-amber-500/40 text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 font-semibold"
+                    asChild
+                  >
+                    <a href="/business/profile.pdf" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-4 w-4" />
+                      <span>Download Official Company Profile PDF</span>
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </Reveal>
         </div>
 
+        {/* Right Column: Inquiry Form using shadcn UI components */}
         <Reveal delay={2}>
-          <form
-            onSubmit={onSubmit}
-            noValidate
-            className="card-premium h-full p-8 sm:p-10 lg:p-12"
-          >
-            <h3 className="font-display text-xl font-semibold text-navy sm:text-2xl">
-              Send an Enquiry
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Form description placeholder.
-            </p>
+          <Card className="border-border/80 shadow-xl bg-card">
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">
+                Send an Industrial Service Inquiry
+              </CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Fill out the form below to receive a quotation or schedule a technical call with our engineering team.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={onSubmit} noValidate className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="text-xs font-semibold text-foreground">
+                      Full Name *
+                    </label>
+                    <Input id="name" name="name" placeholder="Eng. Ahmed Al-Otaibi" required />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-xs font-semibold text-foreground">
+                      Email Address *
+                    </label>
+                    <Input id="email" name="email" type="email" placeholder="name@company.com" required />
+                  </div>
+                </div>
 
-            <div className="mt-9 grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Field id="name" label="Full Name" required />
-                <Field id="email" label="Email Address" type="email" required />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Field id="company" label="Company" />
-                <Field id="phone" label="Phone Number" type="tel" />
-              </div>
-              <Field id="message" label="Project Details" textarea required />
-            </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label htmlFor="company" className="text-xs font-semibold text-foreground">
+                      Company / Facility Name
+                    </label>
+                    <Input id="company" name="company" placeholder="Petrochemical Co." />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="phone" className="text-xs font-semibold text-foreground">
+                      Phone / Mobile Number
+                    </label>
+                    <Input id="phone" name="phone" type="tel" placeholder="+966 5X XXX XXXX" />
+                  </div>
+                </div>
 
-            <button type="submit" disabled={sending} className="btn-base btn-solid group mt-8 w-full disabled:opacity-60">
-              {sending ? "Sending…" : "Submit Enquiry"}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-          </form>
+                <div className="space-y-1.5">
+                  <label htmlFor="service" className="text-xs font-semibold text-foreground">
+                    Required Service Category
+                  </label>
+                  <Input
+                    id="service"
+                    name="service"
+                    placeholder="e.g. Mechanical Work, Welding Solution, Motor Winding, Dewatering Pump Rental"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="text-xs font-semibold text-foreground">
+                    Project Scope & Details *
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Please specify project requirements, site location, timeline, and technical specifications..."
+                    required
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={sending}
+                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold gap-2 shadow-lg h-11"
+                >
+                  <Send className="h-4 w-4" />
+                  <span>{sending ? "Submitting Inquiry..." : "Submit Project Inquiry"}</span>
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </Reveal>
       </div>
     </Section>

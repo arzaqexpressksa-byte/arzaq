@@ -1,65 +1,76 @@
+import { ShieldCheck, HardHat, Clock, Award, Cpu, Wrench } from "lucide-react";
 import { Section, SectionHeading } from "./Section";
 import { Reveal } from "./Reveal";
-import { Counter } from "./Counter";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
-const stats = [
-  { v: 25, s: "+", l: "Statistic Label One" },
-  { v: 480, s: "+", l: "Statistic Label Two" },
-  { v: 150, s: "+", l: "Statistic Label Three" },
-  { v: 12, s: "", l: "Statistic Label Four" },
-];
-
-const steps = [
-  { n: "01", t: "Process Step One", d: "Step description placeholder." },
-  { n: "02", t: "Process Step Two", d: "Step description placeholder." },
-  { n: "03", t: "Process Step Three", d: "Step description placeholder." },
-  { n: "04", t: "Process Step Four", d: "Step description placeholder." },
-  { n: "05", t: "Process Step Five", d: "Step description placeholder." },
+const strengths = [
+  {
+    icon: Award,
+    title: "AWS & ASME Certified Welders",
+    desc: "Qualified professional welders experienced in SMAW, TIG, MIG, FCAW, and SAW for high-pressure pipelines and structural steel.",
+  },
+  {
+    icon: Cpu,
+    title: "Advanced Technology & Equipment",
+    desc: "Deploying state-of-the-art laser alignment tools, motor testing gear, dynamic balancing machines, and fusion welding equipment.",
+  },
+  {
+    icon: HardHat,
+    title: "Zero Compromise Safety Culture",
+    desc: "Enforcing strict HSE protocols, personal protective equipment (PPE) requirements, and hazard risk assessments on every job site.",
+  },
+  {
+    icon: Clock,
+    title: "Rapid Emergency Response",
+    desc: "Dedicated mobile repair units for generator breakdowns, dewatering pump deployment, and urgent pipeline leak sealing.",
+  },
+  {
+    icon: Wrench,
+    title: "Complete In-House Pre-Fabrication",
+    desc: "Off-site workshop pre-fabrication reduces site downtime and guarantees precision fitment before final field installation.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Saudi Vision 2030 Commitment",
+    desc: "Actively contributing to national industrial localization (Saudization), regional infrastructure growth, and sustainable engineering.",
+  },
 ];
 
 export function Strengths() {
   return (
-    <>
-      <Section id="strengths" tone="navy" className="overflow-hidden py-16 sm:py-20 lg:py-24">
-        <div className="blueprint-grid-dark pointer-events-none absolute inset-0 opacity-50" />
-        <div className="relative grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((st, i) => (
-            <Reveal key={st.l} delay={i}>
-              <div className="border-l border-white/15 pl-6">
-                <div className="font-display text-[clamp(2.2rem,5vw,3.25rem)] leading-none font-semibold text-white">
-                  <Counter to={st.v} suffix={st.s} />
-                </div>
-                <div className="mt-3 text-[0.7rem] tracking-[0.18em] text-white/50 uppercase">
-                  {st.l}
-                </div>
-              </div>
+    <Section id="strengths" tone="navy" className="bg-slate-950 text-white">
+      <div className="blueprint-grid-dark pointer-events-none absolute inset-0 opacity-40" />
+      <div className="relative">
+        <SectionHeading
+          eyebrow="Core Strengths"
+          title="Capabilities That Guarantee Project Success"
+          intro="What distinguishes ARZAQ EXPRESS INDUSTRIAL Est. as a reliable engineering and contracting partner in KSA."
+          invert
+        />
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {strengths.map((s, i) => (
+            <Reveal key={s.title} delay={i % 3}>
+              <Card className="h-full border-slate-800 bg-slate-900/80 text-white hover:bg-slate-900 transition-all duration-300 hover:border-amber-500/50 shadow-xl group">
+                <CardHeader className="pb-2">
+                  <div className="rounded-xl bg-slate-800 p-3 text-amber-400 group-hover:bg-amber-600 group-hover:text-white transition-colors w-fit">
+                    <s.icon className="h-6 w-6" />
+                  </div>
+                  <CardTitle className="text-lg font-bold text-white mt-4 group-hover:text-amber-400 transition-colors">
+                    {s.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {s.desc}
+                  </p>
+                </CardContent>
+              </Card>
             </Reveal>
           ))}
         </div>
-      </Section>
-
-      <Section id="process" tone="stone">
-        <SectionHeading
-          eyebrow="Company Strengths"
-          title="A Disciplined Delivery Process"
-          intro="Section intro placeholder. Describe the delivery methodology from enquiry through to handover."
-        />
-        <ol className="mt-16 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
-          {steps.map((s, i) => (
-            <Reveal as="li" key={s.n} delay={i % 5} className="h-full">
-              <div className="group h-full bg-background p-8 transition-colors duration-500 hover:bg-warm">
-                <div className="flex items-center gap-3">
-                  <span className="h-2 w-2 rotate-45 bg-gold" />
-                  <span className="h-px flex-1 bg-border transition-colors duration-500 group-hover:bg-gold/50" />
-                </div>
-                <span className="mt-6 block font-display text-xs tracking-[0.3em] text-gold">{s.n}</span>
-                <h3 className="mt-3 font-display text-base font-semibold text-navy">{s.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </ol>
-      </Section>
-    </>
+      </div>
+    </Section>
   );
 }

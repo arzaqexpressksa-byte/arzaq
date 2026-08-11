@@ -15,9 +15,9 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "Industrial Engineering & Contracting Solutions | Company Name";
+const title = "ARZAQ EXPRESS INDUSTRIAL Est. | Industrial Engineering & Contracting | Saudi Arabia";
 const description =
-  "Premium industrial engineering, fabrication, electromechanical and maintenance services delivered across Saudi Arabia, the UAE and the wider Gulf region.";
+  "ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam KSA, delivers high-quality industrial services in mechanical engineering, civil construction, certified welding & fabrication, E&I, motor winding, generator overhaul, FRP/RTR piping, and pump rental.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-amber-500 selection:text-white">
       <Nav />
       <main>
         <Hero />

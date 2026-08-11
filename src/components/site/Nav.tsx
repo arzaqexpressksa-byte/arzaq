@@ -1,147 +1,247 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { Menu, Phone, FileText, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo, Vision2030Badge } from "./Logo";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
+// EXACT 3 NAVLINKS: Home, About, Contact us
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Core Values", href: "#values" },
-  { label: "Mission & Vision", href: "#mission" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact us", href: "#contact" },
 ];
+
+export function WhatsAppIcon({ className = "h-6 w-6" }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512"
+      className={className}
+    >
+      <path
+        fill="#25D366"
+        d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z"
+      />
+      <path
+        fill="#FFFFFF"
+        d="M223.9 413.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"
+      />
+    </svg>
+  );
+}
+
+// Single Floating WhatsApp Icon Button (No full text)
+export function FloatingWhatsAppButton() {
+  return (
+    <a
+      href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat on WhatsApp"
+      title="Chat on WhatsApp (+966 53 608 3965)"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform duration-300 hover:scale-110 hover:bg-[#20ba59] focus:outline-none ring-4 ring-emerald-400/30"
+    >
+      <WhatsAppIcon className="h-8 w-8" />
+    </a>
+  );
+}
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-all duration-500",
-        scrolled
-          ? "border-border bg-background/90 shadow-[0_1px_24px_-12px_rgba(11,31,51,0.35)] backdrop-blur-xl"
-          : "border-white/10 bg-navy/20 backdrop-blur-[2px]",
-      )}
-    >
-      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8 lg:grid-cols-[auto_1fr_auto] lg:px-12">
-        <a href="#home" className="flex min-w-0 items-center gap-3">
-          <span
-            className={cn(
-              "grid h-10 w-10 shrink-0 place-items-center border",
-              scrolled ? "border-navy/15" : "border-white/25",
-            )}
-          >
-            <span className="h-3.5 w-3.5 rotate-45 border border-gold" />
-          </span>
-          <span className="min-w-0">
-            <span
-              className={cn(
-                "block truncate font-display text-[0.95rem] leading-tight font-bold tracking-[0.04em]",
-                scrolled ? "text-navy" : "text-white",
-              )}
-            >
-              COMPANY NAME
-            </span>
-            <span
-              className={cn(
-                "block truncate text-[0.6rem] tracking-[0.24em] uppercase",
-                scrolled ? "text-muted-foreground" : "text-white/60",
-              )}
-            >
-              Industrial Est.
-            </span>
-          </span>
-        </a>
-
-        <nav className="hidden justify-center gap-7 lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className={cn(
-                "relative py-1 text-[0.8rem] font-medium tracking-wide transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
-                scrolled ? "text-charcoal/75 hover:text-navy" : "text-white/80 hover:text-white",
-              )}
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center justify-end gap-2">
-          <a
-            href="#contact"
-            className={cn(
-              "btn-base hidden h-11 px-6 text-[0.7rem] sm:inline-flex",
-              scrolled ? "btn-solid" : "bg-white text-navy hover:bg-gold hover:text-white",
-            )}
-          >
-            Request a Quote
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          scrolled
+            ? "border-b border-border/80 bg-background/95 shadow-md backdrop-blur-md py-3"
+            : "border-b border-white/10 bg-slate-950/40 backdrop-blur-sm py-4"
+        )}
+      >
+        <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+          {/* Logo */}
+          <a href="#home" className="group focus:outline-none">
+            <Logo variant={scrolled ? "auto" : "dark"} size="md" />
           </a>
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className={cn(
-              "grid h-11 w-11 shrink-0 place-items-center border transition-colors hover:border-gold hover:text-gold lg:hidden",
-              scrolled ? "border-navy/15 text-navy" : "border-white/25 text-white",
-            )}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-border bg-background lg:hidden"
-          >
-            <nav className="mx-auto flex max-w-[1280px] flex-col px-5 py-4 sm:px-8">
-              {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between border-b border-border/70 py-4 font-display text-lg font-medium text-navy last:border-0"
-                >
-                  {l.label}
-                  <ArrowUpRight className="h-4 w-4 text-gold" />
-                </a>
-              ))}
+          {/* 3 Navlinks Only: Home, About, Contact us */}
+          <nav className="hidden items-center gap-7 md:flex">
+            {links.map((l) => (
               <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="btn-base btn-solid mt-5 mb-2 w-full"
+                key={l.href}
+                href={l.href}
+                className={cn(
+                  "text-sm font-semibold transition-colors px-2 py-1 rounded-md hover:text-amber-500",
+                  scrolled ? "text-foreground" : "text-white"
+                )}
               >
-                Request a Quote
+                {l.label}
               </a>
-            </nav>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </header>
+            ))}
+          </nav>
+
+          {/* Desktop Right Side: Display Phone Number & Single WhatsApp Icon */}
+          <div className="hidden items-center gap-3 lg:flex">
+            {/* Phone Number Display */}
+            <a
+              href="tel:+966536083965"
+              className={cn(
+                "flex items-center gap-2 text-xs sm:text-sm font-bold transition-colors px-3.5 py-1.5 rounded-full border",
+                scrolled
+                  ? "border-border text-foreground hover:text-amber-600 bg-accent/30"
+                  : "border-white/20 text-white hover:text-amber-400 bg-white/5"
+              )}
+            >
+              <Phone className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
+              <span>+966 53 608 3965</span>
+            </a>
+
+            {/* Single WhatsApp Icon Button (No full text) */}
+            <a
+              href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              title="Chat on WhatsApp (+966 53 608 3965)"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md transition-transform duration-200 hover:scale-110 hover:bg-[#20ba59]"
+            >
+              <WhatsAppIcon className="h-6 w-6" />
+            </a>
+          </div>
+
+          {/* Mobile Bar: Phone link, Single WhatsApp Icon & Menu Trigger */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href="tel:+966536083965"
+              className={cn(
+                "flex items-center gap-1.5 text-xs font-bold px-2.5 py-1.5 rounded-full border md:hidden",
+                scrolled ? "border-border text-foreground" : "border-white/20 text-white"
+              )}
+            >
+              <Phone className="h-3 w-3 text-amber-500" />
+              <span>Call</span>
+            </a>
+
+            {/* Mobile Single WhatsApp Icon */}
+            <a
+              href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              title="Chat on WhatsApp"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md md:hidden"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+            </a>
+
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "h-10 w-10 border",
+                    scrolled ? "border-border text-foreground" : "border-white/20 text-white"
+                  )}
+                  aria-label="Open navigation menu"
+                >
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6">
+                <SheetHeader className="text-left mb-6">
+                  <SheetTitle>
+                    <Logo size="sm" showTagline={true} />
+                  </SheetTitle>
+                  <div className="pt-2">
+                    <Vision2030Badge />
+                  </div>
+                </SheetHeader>
+
+                {/* 3 Navlinks for Mobile */}
+                <div className="flex flex-col gap-2 py-4">
+                  {links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-bold text-foreground transition-colors hover:bg-accent"
+                    >
+                      <span>{l.label}</span>
+                      <ChevronRight className="h-4 w-4 text-amber-500" />
+                    </a>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-col gap-3">
+                  {/* Phone Call Link */}
+                  <Button
+                    variant="outline"
+                    className="w-full gap-2 justify-center font-bold text-xs uppercase"
+                    asChild
+                  >
+                    <a href="tel:+966536083965">
+                      <Phone className="h-4 w-4 text-amber-500" />
+                      <span>Call: +966 53 608 3965</span>
+                    </a>
+                  </Button>
+
+                  {/* Single WhatsApp Icon Row Link for Mobile Drawer */}
+                  <Button
+                    className="w-full gap-2 justify-center bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase shadow"
+                    asChild
+                  >
+                    <a
+                      href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setOpen(false)}
+                    >
+                      <WhatsAppIcon className="h-5 w-5" />
+                      <span>WhatsApp Direct Chat</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    variant="secondary"
+                    className="w-full gap-2 justify-center font-semibold text-xs"
+                    asChild
+                  >
+                    <a
+                      href="/business/profile.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setOpen(false)}
+                    >
+                      <FileText className="h-4 w-4 text-amber-500" />
+                      <span>Company Profile PDF</span>
+                    </a>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </header>
+
+      {/* Single Floating WhatsApp Icon Button at Bottom Right */}
+      <FloatingWhatsAppButton />
+    </>
   );
 }

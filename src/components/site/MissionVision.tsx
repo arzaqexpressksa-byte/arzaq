@@ -1,21 +1,32 @@
-import { Target, Eye } from "lucide-react";
+import { Target, Eye, CheckCircle2 } from "lucide-react";
 import { Section, SectionHeading } from "./Section";
 import { Reveal } from "./Reveal";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 const blocks = [
   {
     icon: Target,
     label: "Our Mission",
-    title: "Mission Statement Heading",
-    body: "Mission description placeholder. Replace this paragraph with the company mission statement exactly as written in your source material.",
-    points: ["Mission point one", "Mission point two", "Mission point three"],
+    title: "Delivering Technical Excellence & Safety",
+    body: "To deliver exceptional industrial services in mechanical, civil, welding, electrical, and instrumentation sectors by combining technical expertise, quality workmanship, and a strong commitment to safety and client satisfaction. We strive to be a trusted partner to our clients by providing innovative, reliable, and cost-effective solutions that enhance productivity and operational efficiency.",
+    points: [
+      "Technical Expertise & Workmanship",
+      "Uncompromising Safety Commitment",
+      "Cost-Effective Operational Efficiency",
+    ],
   },
   {
     icon: Eye,
     label: "Our Vision",
-    title: "Vision Statement Heading",
-    body: "Vision description placeholder. Replace this paragraph with the company vision statement exactly as written in your source material.",
-    points: ["Vision point one", "Vision point two", "Vision point three"],
+    title: "Leading Industrial Service Provider in KSA",
+    body: "To become a leading industrial service provider in Jubail and across the region, recognized for our excellence in execution, uncompromising quality, and dedication to innovation and sustainability. We aim to continually grow by building long-term relationships with clients and contributing positively to the industries and communities we serve.",
+    points: [
+      "Regional Leadership in Jubail & Eastern Province",
+      "Innovation & Sustainable Practices",
+      "Long-Term Strategic Partnerships",
+    ],
   },
 ];
 
@@ -24,32 +35,48 @@ export function MissionVision() {
     <Section id="mission" tone="white">
       <SectionHeading
         eyebrow="Mission & Vision"
-        title="Direction, Purpose and Long-Term Intent"
+        title="Our Strategic Purpose and Regional Vision"
         align="center"
+        intro="Guiding ARZAQ EXPRESS INDUSTRIAL Est. toward operational excellence and sustainable contribution to Saudi Arabia's industrial expansion."
       />
-      <div className="mt-14 grid gap-5 lg:grid-cols-2">
+
+      <div className="mt-14 grid gap-8 lg:grid-cols-2">
         {blocks.map((b, i) => (
-          <Reveal key={b.label} delay={i}>
-            <article className="card-premium group h-full p-9 sm:p-12">
-              <div className="flex items-center gap-4">
-                <span className="grid h-12 w-12 shrink-0 place-items-center border border-navy/12 transition-colors duration-500 group-hover:border-gold">
-                  <b.icon className="h-5 w-5 text-gold" strokeWidth={1.4} />
-                </span>
-                <span className="eyebrow">{b.label}</span>
-              </div>
-              <h3 className="mt-8 text-[clamp(1.35rem,2.6vw,1.9rem)] leading-snug font-semibold text-navy">
-                {b.title}
-              </h3>
-              <p className="mt-4 leading-relaxed text-muted-foreground">{b.body}</p>
-              <ul className="mt-8 space-y-3 border-t border-border pt-7">
-                {b.points.map((p) => (
-                  <li key={p} className="flex items-center gap-3 text-sm text-charcoal">
-                    <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </article>
+          <Reveal key={b.label} delay={i * 0.2}>
+            <Card className="h-full border-border/80 shadow-lg hover:shadow-xl transition-all hover:border-amber-500/40 bg-gradient-to-b from-card to-accent/10">
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-xl bg-amber-500/10 p-3 text-amber-600 dark:text-amber-400">
+                    <b.icon className="h-6 w-6" />
+                  </div>
+                  <Badge variant="secondary" className="bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold uppercase tracking-wider text-xs">
+                    {b.label}
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl sm:text-2xl font-bold text-foreground mt-4">
+                  {b.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {b.body}
+                </p>
+                <Separator className="bg-border/60" />
+                <div className="space-y-2.5">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                    Key Commitments
+                  </h4>
+                  <ul className="space-y-2">
+                    {b.points.map((p) => (
+                      <li key={p} className="flex items-center gap-2.5 text-xs sm:text-sm text-foreground">
+                        <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0" />
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
           </Reveal>
         ))}
       </div>
