@@ -6,9 +6,5 @@ export default defineConfig({
   },
   nitro: {
     preset: "netlify",
-    prerender: {
-      routes: ["/"],
-      crawlLinks: true,
-    },
   },
 });
