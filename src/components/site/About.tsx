@@ -69,12 +69,12 @@ export function About() {
           </Card>
         </div>
 
-        {/* Right Column: Text Content from Page 2 of PDF */}
+        {/* Right Column: Text Content */}
         <div className="order-1 lg:order-2">
           <SectionHeading
             eyebrow="About Company"
             title="Leading Industrial Services Partner in Dammam & Across Saudi Arabia"
-            intro="At ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam, we are recognized for delivering a wide range of high-quality industrial services designed to meet the demanding needs of modern industries."
+            intro="At ARZAQ EXPRESS Est., located in Dammam, we are recognized for delivering a wide range of high-quality industrial services designed to meet the demanding needs of modern industries."
           />
 
           <Reveal delay={2}>

@@ -63,7 +63,7 @@ export function CoreValues() {
         <SectionHeading
           eyebrow="Core Values"
           title="The Principles Driving Our Engineering Excellence"
-          intro="Our core values guide every decision, project execution, and client interaction at ARZAQ EXPRESS INDUSTRIAL Est."
+          intro="Our core values guide every decision, project execution, and client interaction at ARZAQ EXPRESS Est."
           invert
         />
 

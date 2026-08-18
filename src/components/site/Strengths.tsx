@@ -45,7 +45,7 @@ export function Strengths() {
         <SectionHeading
           eyebrow="Core Strengths"
           title="Capabilities That Guarantee Project Success"
-          intro="What distinguishes ARZAQ EXPRESS INDUSTRIAL Est. as a reliable engineering and contracting partner in KSA."
+          intro="What distinguishes ARZAQ EXPRESS Est. as a reliable engineering and contracting partner in KSA."
           invert
         />
 

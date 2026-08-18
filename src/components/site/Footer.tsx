@@ -46,7 +46,7 @@ export function Footer() {
             </div>
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
-              At ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam, we are recognized for delivering a wide range of high-quality industrial services in mechanical engineering, civil construction, welding & fabrication, electrical systems, and instrumentation across Saudi Arabia.
+              At ARZAQ EXPRESS Est., located in Dammam, we are recognized for delivering a wide range of high-quality industrial services in mechanical engineering, civil construction, welding & fabrication, electrical systems, and instrumentation across Saudi Arabia.
             </p>
 
             <div className="pt-2">
@@ -112,11 +112,17 @@ export function Footer() {
                 <MapPin className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
                 <span>Omar Bin Al-Khattab Street, Noor Complex, Dammam, Kingdom of Saudi Arabia</span>
               </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 text-amber-500 shrink-0" />
-                <a href="tel:+966536083965" className="hover:text-amber-400 transition-colors">
-                  +966-536083965 / +966-590316144
-                </a>
+              <li className="flex items-start gap-2.5">
+                <Phone className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <a href="tel:+966590316144" className="hover:text-amber-400 transition-colors">
+                    +966-590316144
+                  </a>
+                  <span>/</span>
+                  <a href="tel:+966536083965" className="hover:text-amber-400 transition-colors">
+                    +966-536083965
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-amber-500 shrink-0" />
@@ -143,7 +149,7 @@ export function Footer() {
         <Separator className="my-10 bg-slate-800" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} ARZAQ EXPRESS INDUSTRIAL Est. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ARZAQ EXPRESS Est. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span>Vision 2030 Saudi Arabia Partner</span>
             <button

@@ -21,7 +21,7 @@ const serviceHighlights = [
     title: "Mechanical Works & Structural Pre-Fabrication",
     img: s1,
     alt: "Precision industrial mechanical engineering and steel pre-fabrication",
-    badge: "Page 6 Profile",
+    badge: "Structural & Pre-Fabrication",
     intro: "We specialize in the supply of fittings, flanges, fasteners, and heavy industrial mechanical products. Our mechanical engineering services span pre-fabrication, erection of steel structures, piping, tanks, silos, and installation of stationary and rotating equipment throughout Saudi Arabia.",
     bullets: [
       "Machinery installation, precision laser alignment & commissioning",
@@ -37,8 +37,8 @@ const serviceHighlights = [
     title: "Certified Welding & Fabrication Solutions",
     img: s2,
     alt: "Professional welder performing MIG/TIG structural welding",
-    badge: "Page 7 Profile",
-    intro: "At ARZAQ EXPRESS INDUSTRIAL Est., our welding services are executed by certified professionals following international welding codes and standards (AWS, ASME), ensuring total safety, durability, and structural integrity in demanding oil & gas and petrochemical environments.",
+    badge: "AWS & ASME Certified",
+    intro: "At ARZAQ EXPRESS Est., our welding services are executed by certified professionals following international welding codes and standards (AWS, ASME), ensuring total safety, durability, and structural integrity in demanding oil & gas and petrochemical environments.",
     bullets: [
       "Shielded Metal Arc (SMAW) & Gas Metal Arc (GMAW/MIG)",
       "Gas Tungsten Arc (GTAW/TIG) & Flux-Cored Arc (FCAW)",
@@ -53,7 +53,7 @@ const serviceHighlights = [
     title: "Generator & Electric Motor Winding Overhaul",
     img: s3,
     alt: "Electric motor rewinding technician servicing industrial generator control panel",
-    badge: "Pages 8 & 15 Profile",
+    badge: "Power & Motor Overhaul",
     intro: "Uninterrupted power systems are critical for industrial operations. We offer complete maintenance solutions for diesel and gas generators of all makes, alongside expert AC/DC electric motor rewinding and insulation to meet or exceed OEM specifications.",
     bullets: [
       "Routine preventive maintenance & emergency power restoration",
@@ -69,7 +69,7 @@ const serviceHighlights = [
     title: "FRP / RTR & HDPE Piping Solutions",
     img: s4,
     alt: "Technicians inspecting FRP and RTR industrial piping systems",
-    badge: "Pages 10 & 11 Profile",
+    badge: "Specialized Industrial Piping",
     intro: "Specialized Fiber Reinforced Plastic (FRP), Reinforced Thermosetting Resin (RTR), HDPE, and CPVC piping services designed for harsh chemical, marine, and water treatment environments requiring extreme chemical resistance and long service life.",
     bullets: [
       "Custom FRP/RTR piping system design, fabrication & installation",

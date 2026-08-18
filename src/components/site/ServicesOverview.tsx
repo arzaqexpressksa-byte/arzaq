@@ -269,7 +269,7 @@ export function ServicesOverview() {
       <SectionHeading
         eyebrow="Services Overview"
         title="Comprehensive Industrial Services Portfolio"
-        intro="ARZAQ EXPRESS INDUSTRIAL Est. provides 16 specialized core services tailored to support Saudi Arabia's oil & gas, petrochemical, power, and civil infrastructure sectors."
+        intro="ARZAQ EXPRESS Est. provides 16 specialized core services tailored to support Saudi Arabia's oil & gas, petrochemical, power, and civil infrastructure sectors."
       />
 
       {/* Services Grid using shadcn Cards */}

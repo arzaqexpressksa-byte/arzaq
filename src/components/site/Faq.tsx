@@ -10,7 +10,7 @@ import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    q: "What core industrial services does ARZAQ EXPRESS INDUSTRIAL Est. specialize in?",
+    q: "What core industrial services does ARZAQ EXPRESS Est. specialize in?",
     a: "We provide 16 specialized industrial service categories across mechanical engineering, certified welding & pre-fabrication (SMAW, MIG, TIG, FCAW, SAW), generator repair, forklift fleet maintenance, electric motor winding, FRP/RTR and HDPE piping, civil works, E&I services, industrial materials supply, waterproofing/epoxy coating, asphalt works, de-watering pump rental & sales, and controlled demolition work.",
   },
   {
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How can I request a technical commercial quote or download the company profile?",
-    a: "You can click 'Company Profile' in the top header or hero section to view and download our official 21-page PDF document. Alternatively, fill out the enquiry form below or contact our sales team directly at sales@arzaqexpressksa.com or +966-536083965 / +966-590316144.",
+    a: "You can click 'Company Profile' in the top header or hero section to view and download our official corporate brochure. Alternatively, fill out the inquiry form below or contact our sales team directly at sales@arzaqexpressksa.com or +966-590316144 / +966-536083965.",
   },
 ];
 

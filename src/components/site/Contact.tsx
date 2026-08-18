@@ -30,8 +30,8 @@ const contactDetails = [
   {
     icon: Phone,
     label: "Phone & WhatsApp",
-    value: "+966-536083965 / +966-590316144",
-    href: "tel:+966536083965",
+    value: "+966-590316144 / +966-536083965",
+    href: "tel:+966590316144",
   },
   {
     icon: Mail,
@@ -72,7 +72,7 @@ export function Contact() {
       setSending(false);
       form.reset();
       toast.success("Inquiry Submitted Successfully!", {
-        description: "Thank you for reaching out to ARZAQ EXPRESS INDUSTRIAL Est. Our engineering sales team will contact you shortly.",
+        description: "Thank you for reaching out to ARZAQ EXPRESS Est. Our engineering sales team will contact you shortly.",
       });
     }, 800);
   };
@@ -93,15 +93,15 @@ export function Contact() {
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="border-amber-500/40 text-amber-400 bg-amber-500/10 font-semibold text-xs">
-                    Page 21 Profile
+                    Official Headquarters
                   </Badge>
                   <Vision2030Badge />
                 </div>
                 <CardTitle className="text-xl font-bold text-white mt-3">
-                  ARZAQ EXPRESS INDUSTRIAL Est.
+                  ARZAQ EXPRESS Est.
                 </CardTitle>
                 <CardDescription className="text-slate-400 text-xs sm:text-sm">
-                  Dammam & Jubail, Eastern Province, Kingdom of Saudi Arabia
+                  Dammam, Eastern Province, Kingdom of Saudi Arabia
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6 pt-2">
@@ -114,7 +114,23 @@ export function Contact() {
                       <div className="text-[0.65rem] font-bold uppercase tracking-wider text-slate-400">
                         {item.label}
                       </div>
-                      {item.href ? (
+                      {item.label === "Phone & WhatsApp" ? (
+                        <div className="text-xs sm:text-sm font-semibold text-white mt-0.5 flex items-center gap-1.5 flex-wrap">
+                          <a
+                            href="tel:+966590316144"
+                            className="hover:text-amber-400 transition-colors"
+                          >
+                            +966-590316144
+                          </a>
+                          <span className="text-slate-400">/</span>
+                          <a
+                            href="tel:+966536083965"
+                            className="hover:text-amber-400 transition-colors"
+                          >
+                            +966-536083965
+                          </a>
+                        </div>
+                      ) : item.href ? (
                         <a
                           href={item.href}
                           target={item.href.startsWith("http") ? "_blank" : undefined}

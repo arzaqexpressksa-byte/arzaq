@@ -27,7 +27,7 @@ export function Logo({
       {/* AE Circular Emblem Icon */}
       <img
         src={logoEmblem}
-        alt="ARZAQ EXPRESS INDUSTRIAL Est. Emblem"
+        alt="ARZAQ EXPRESS Est. Emblem"
         className={cn("w-auto object-contain shrink-0 transition-all duration-300 drop-shadow-sm", sizeClasses[size])}
       />
 
@@ -53,7 +53,7 @@ export function Logo({
                 isDark ? "text-white/80" : "text-[#0C2340]/90"
               )}
             >
-              INDUSTRIAL Est.
+              EST.
             </span>
             <span className="h-0.5 w-2.5 bg-[#F36F21] rounded-full" />
           </div>

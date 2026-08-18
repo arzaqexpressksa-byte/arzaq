@@ -19,7 +19,7 @@ import {
 const stats = [
   { v: 16, s: "+", l: "Core Industrial Services", l2: "Mechanical, Electrical, Civil & Fabrication" },
   { v: 100, s: "%", l: "Safety & Quality Standard", l2: "Compliant with International Codes" },
-  { v: 24, s: "/7", l: "On-Site Support", l2: "Serving Dammam, Jubail & Across KSA" },
+  { v: 24, s: "/7", l: "On-Site Support", l2: "Serving Dammam & Across KSA" },
 ];
 
 export function Hero() {
@@ -51,7 +51,7 @@ export function Hero() {
             <Vision2030Badge />
             <Badge variant="outline" className="border-white/20 bg-white/5 text-white/90 gap-1.5 py-1 px-3">
               <MapPin className="h-3.5 w-3.5 text-amber-500" />
-              <span>Dammam & Jubail, Saudi Arabia</span>
+              <span>Dammam, Eastern Province, Saudi Arabia</span>
             </Badge>
           </motion.div>
 
@@ -63,7 +63,7 @@ export function Hero() {
             className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]"
           >
             ARZAQ EXPRESS <br />
-            <span className="text-amber-500">INDUSTRIAL Est.</span>
+            <span className="text-amber-500">Est.</span>
           </motion.h1>
 
           <motion.p
@@ -74,7 +74,7 @@ export function Hero() {
           >
             Delivering high-quality industrial services across Mechanical Engineering, Civil Construction, 
             Certified Welding & Fabrication, Electrical Systems, Instrumentation, Generator & Motor Overhaul, 
-            and Materials Supply in Dammam, Jubail, and throughout the Kingdom of Saudi Arabia.
+            and Materials Supply. Serving Dammam & Across the Kingdom of Saudi Arabia.
           </motion.p>
 
           {/* Highlights Pills */}
@@ -131,17 +131,17 @@ export function Hero() {
                 <DialogHeader className="mb-2">
                   <DialogTitle className="text-xl font-bold flex items-center gap-2 text-amber-400">
                     <FileText className="h-5 w-5" />
-                    ARZAQ EXPRESS INDUSTRIAL Est. — Company Profile
+                    ARZAQ EXPRESS Est. — Company Profile
                   </DialogTitle>
                   <DialogDescription className="text-slate-400">
-                    Official Company Profile (21 Pages). You can view below or download directly.
+                    Official Corporate Profile. You can view below or download directly.
                   </DialogDescription>
                 </DialogHeader>
 
                 <div className="flex-1 w-full rounded-lg overflow-hidden border border-slate-800 bg-slate-900">
                   <iframe
                     src="/business/profile.pdf"
-                    title="Arzaq Express Industrial Est Profile PDF"
+                    title="Arzaq Express Est Profile PDF"
                     className="w-full h-full border-0"
                   />
                 </div>
@@ -151,7 +151,7 @@ export function Hero() {
                     Close
                   </Button>
                   <Button size="sm" className="bg-amber-600 hover:bg-amber-700 text-white gap-2" asChild>
-                    <a href="/business/profile.pdf" download="Arzaq_Express_Industrial_Est_Profile.pdf">
+                    <a href="/business/profile.pdf" download="Arzaq_Express_Est_Profile.pdf">
                       <FileText className="h-4 w-4" />
                       <span>Download PDF</span>
                     </a>

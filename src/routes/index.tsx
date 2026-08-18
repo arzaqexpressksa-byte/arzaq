@@ -15,9 +15,9 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "ARZAQ EXPRESS INDUSTRIAL Est. | Industrial Engineering & Contracting | Saudi Arabia";
+const title = "ARZAQ EXPRESS Est. | Industrial Engineering & Contracting | Saudi Arabia";
 const description =
-  "ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam KSA, delivers high-quality industrial services in mechanical engineering, civil construction, certified welding & fabrication, E&I, motor winding, generator overhaul, FRP/RTR piping, and pump rental.";
+  "ARZAQ EXPRESS Est., located in Dammam KSA, delivers high-quality industrial services in mechanical engineering, civil construction, certified welding & fabrication, E&I, motor winding, generator overhaul, FRP/RTR piping, and pump rental.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

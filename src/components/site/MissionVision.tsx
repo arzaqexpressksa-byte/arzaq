@@ -37,7 +37,7 @@ export function MissionVision() {
         eyebrow="Mission & Vision"
         title="Our Strategic Purpose and Regional Vision"
         align="center"
-        intro="Guiding ARZAQ EXPRESS INDUSTRIAL Est. toward operational excellence and sustainable contribution to Saudi Arabia's industrial expansion."
+        intro="Guiding ARZAQ EXPRESS Est. toward operational excellence and sustainable contribution to Saudi Arabia's industrial expansion."
       />
 
       <div className="mt-14 grid gap-8 lg:grid-cols-2">
