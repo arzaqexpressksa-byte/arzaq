@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Wrench,
   Flame,
@@ -18,12 +18,15 @@ import {
   Hammer,
   ArrowRight,
   CheckCircle2,
+  Search,
+  X,
 } from "lucide-react";
 import { Section, SectionHeading } from "./Section";
 import { Reveal } from "./Reveal";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogContent,
@@ -33,6 +36,14 @@ import {
   DialogFooter,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 export const allServices = [
   {
@@ -261,91 +272,152 @@ export const allServices = [
   },
 ];
 
+const ITEMS_PER_PAGE = 6;
+
 export function ServicesOverview() {
   const [selectedService, setSelectedService] = useState<typeof allServices[0] | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredServices = useMemo(() => {
+    return allServices.filter(
+      (s) =>
+        s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.summary.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
+
+  const totalPages = Math.ceil(filteredServices.length / ITEMS_PER_PAGE);
+  const paginatedServices = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredServices.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredServices, currentPage]);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      const section = document.getElementById("services");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
-    <Section id="services" tone="stone" className="bg-slate-100 dark:bg-slate-900/50">
+    <Section id="services" tone="stone" className="bg-slate-100 dark:bg-slate-900/50 py-12 sm:py-20">
       <SectionHeading
         eyebrow="Services Overview"
         title="Comprehensive Industrial Services Portfolio"
         intro="ARZAQ EXPRESS INDUSTRIAL Est. provides 16 specialized core services tailored to support Saudi Arabia's oil & gas, petrochemical, power, and civil infrastructure sectors."
       />
 
-      {/* Services Grid using shadcn Cards */}
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {allServices.map((s, i) => (
-          <Reveal key={s.id} delay={(i % 4) * 0.1}>
-            <Card className="h-full border-border/70 hover:border-amber-500/50 transition-all duration-300 hover:shadow-xl group flex flex-col justify-between bg-card">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="rounded-xl bg-amber-500/10 p-3 text-amber-600 dark:text-amber-400 group-hover:bg-amber-600 group-hover:text-white transition-colors">
-                    <s.icon className="h-6 w-6" />
+      {/* Touch-Friendly Mobile Search & Info */}
+      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 max-w-4xl mx-auto">
+        <div className="relative w-full sm:w-80">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search 16 industrial services..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="pl-9 pr-8 bg-background border-border text-sm h-11 sm:h-10 rounded-xl"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setCurrentPage(1);
+              }}
+              aria-label="Clear search"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
+        </div>
+        <div className="text-xs font-semibold text-muted-foreground text-right sm:text-left px-1">
+          Showing <span className="text-amber-600 dark:text-amber-400 font-bold">{paginatedServices.length}</span> of{" "}
+          <span className="text-foreground font-bold">{filteredServices.length}</span> Services
+        </div>
+      </div>
+
+      {/* Services Responsive Grid */}
+      <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {paginatedServices.map((s, i) => (
+          <Reveal key={s.id} delay={(i % 3) * 0.1}>
+            <Card className="h-full border-border/70 hover:border-amber-500/50 transition-all duration-300 hover:shadow-xl group flex flex-col justify-between bg-card rounded-2xl">
+              <CardHeader className="pb-2 pt-5 px-5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="rounded-xl bg-amber-500/10 p-2.5 text-amber-600 dark:text-amber-400 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                    <s.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
-                  <Badge variant="outline" className="text-[0.65rem] border-amber-500/30 text-amber-600 dark:text-amber-400 font-semibold uppercase">
+                  <Badge variant="outline" className="text-[0.65rem] border-amber-500/30 text-amber-600 dark:text-amber-400 font-semibold uppercase shrink-0">
                     {s.category}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg font-bold text-foreground mt-4 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <CardTitle className="text-base sm:text-lg font-bold text-foreground mt-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-snug">
                   {s.title}
                 </CardTitle>
               </CardHeader>
 
-              <CardContent className="pb-4">
+              <CardContent className="pb-3 px-5">
                 <CardDescription className="text-xs sm:text-sm leading-relaxed line-clamp-3 text-muted-foreground">
                   {s.summary}
                 </CardDescription>
               </CardContent>
 
-              <CardFooter className="pt-0">
+              <CardFooter className="pt-0 pb-4 px-5">
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setSelectedService(s)}
-                      className="w-full justify-between text-xs font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-700 hover:bg-amber-500/10"
+                      className="w-full justify-between text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 hover:bg-amber-500/10 h-11 sm:h-9 rounded-xl"
                     >
                       <span>View Specifications</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
+                      <ArrowRight className="h-4 w-4" />
                     </Button>
                   </DialogTrigger>
                   {selectedService && (
-                    <DialogContent className="max-w-xl max-h-[85vh] overflow-y-auto">
-                      <DialogHeader>
+                    <DialogContent className="max-w-[92vw] sm:max-w-xl max-h-[85vh] overflow-y-auto p-4 sm:p-6 rounded-2xl">
+                      <DialogHeader className="text-left">
                         <div className="flex items-center gap-2">
                           <div className="rounded-lg bg-amber-500/10 p-2 text-amber-600 dark:text-amber-400">
                             <selectedService.icon className="h-5 w-5" />
                           </div>
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="text-xs font-semibold">
                             {selectedService.category}
                           </Badge>
                         </div>
-                        <DialogTitle className="text-xl font-bold mt-2">
+                        <DialogTitle className="text-lg sm:text-xl font-bold mt-2">
                           {selectedService.title}
                         </DialogTitle>
-                        <DialogDescription className="text-sm pt-1">
+                        <DialogDescription className="text-xs sm:text-sm pt-1">
                           {selectedService.summary}
                         </DialogDescription>
                       </DialogHeader>
 
-                      <div className="space-y-4 py-4">
+                      <div className="space-y-3 py-3">
                         <h4 className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                           Scope & Technical Capabilities
                         </h4>
-                        <div className="grid gap-2.5">
+                        <div className="grid gap-2">
                           {selectedService.details.map((d, idx) => (
-                            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
+                            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground bg-muted/40 p-2.5 rounded-lg">
                               <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                              <span>{d}</span>
+                              <span className="leading-snug">{d}</span>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                      <DialogFooter className="flex flex-col sm:flex-row gap-2 pt-2 border-t">
+                      <DialogFooter className="flex flex-col sm:flex-row gap-2 pt-3 border-t">
                         <Button
-                          className="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-semibold"
+                          className="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-bold h-11 sm:h-10 rounded-xl"
                           asChild
                         >
                           <a href="#contact">Request Service Quote</a>
@@ -359,6 +431,44 @@ export function ServicesOverview() {
           </Reveal>
         ))}
       </div>
+
+      {/* On-Page Touch-Friendly Grid Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="mt-8 sm:mt-12 overflow-x-auto py-2">
+          <Pagination>
+            <PaginationContent className="gap-1 sm:gap-2">
+              <PaginationItem>
+                <PaginationPrevious
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  className={currentPage === 1 ? "pointer-events-none opacity-40 h-10 px-3 text-xs" : "cursor-pointer h-10 px-3 text-xs"}
+                />
+              </PaginationItem>
+
+              {Array.from({ length: totalPages }).map((_, index) => {
+                const pageNum = index + 1;
+                return (
+                  <PaginationItem key={pageNum}>
+                    <PaginationLink
+                      isActive={currentPage === pageNum}
+                      onClick={() => handlePageChange(pageNum)}
+                      className="cursor-pointer font-bold h-10 w-10 text-xs rounded-lg"
+                    >
+                      {pageNum}
+                    </PaginationLink>
+                  </PaginationItem>
+                );
+              })}
+
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  className={currentPage === totalPages ? "pointer-events-none opacity-40 h-10 px-3 text-xs" : "cursor-pointer h-10 px-3 text-xs"}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </Section>
   );
 }

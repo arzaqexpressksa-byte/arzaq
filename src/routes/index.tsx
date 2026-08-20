@@ -7,6 +7,8 @@ import { CoreValues } from "@/components/site/CoreValues";
 import { MissionVision } from "@/components/site/MissionVision";
 import { ServicesOverview } from "@/components/site/ServicesOverview";
 import { ServiceDetail } from "@/components/site/ServiceDetail";
+import { ScaffoldingProducts } from "@/components/site/ScaffoldingProducts";
+import { HeavyEquipment } from "@/components/site/HeavyEquipment";
 import { Industries } from "@/components/site/Industries";
 import { Projects } from "@/components/site/Projects";
 import { Strengths } from "@/components/site/Strengths";
@@ -15,9 +17,9 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "ARZAQ EXPRESS INDUSTRIAL Est. | Industrial Engineering & Contracting | Saudi Arabia";
+const title = "ARZAQ EXPRESS INDUSTRIAL Est. | Heavy Equipment Availability & Engineering | Saudi Arabia";
 const description =
-  "ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam KSA, delivers high-quality industrial services in mechanical engineering, civil construction, certified welding & fabrication, E&I, motor winding, generator overhaul, FRP/RTR piping, and pump rental.";
+  "ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam KSA, supplies 20 heavy equipment machinery (Cranes, Excavators, JCB, Pavers, Boom Trucks, Dump Trucks, Rollers) and certified scaffolding towers & ladders.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,6 +47,8 @@ function Index() {
         <MissionVision />
         <ServicesOverview />
         <ServiceDetail />
+        <ScaffoldingProducts />
+        <HeavyEquipment />
         <Industries />
         <Projects />
         <Strengths />

@@ -11,10 +11,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-// EXACT 3 NAVLINKS: Home, About, Contact us
+// EXACT 3 NAVLINKS + SECTIONS
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Scaffolding & Towers", href: "#scaffolding" },
+  { label: "Heavy Equipment", href: "#equipment" },
   { label: "Contact us", href: "#contact" },
 ];
 
@@ -68,28 +71,25 @@ export function Nav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300 border-b shadow-sm backdrop-blur-md",
           scrolled
-            ? "border-b border-border/80 bg-background/95 shadow-md backdrop-blur-md py-3"
-            : "border-b border-white/10 bg-slate-950/40 backdrop-blur-sm py-4"
+            ? "border-slate-200 bg-white/95 py-2.5 shadow-md"
+            : "border-slate-200/80 bg-white/90 py-3.5"
         )}
       >
         <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
+          {/* Logo with Light Background */}
           <a href="#home" className="group focus:outline-none">
-            <Logo variant={scrolled ? "auto" : "dark"} size="md" />
+            <Logo variant="light" size="md" />
           </a>
 
-          {/* 3 Navlinks Only: Home, About, Contact us */}
+          {/* Navlinks */}
           <nav className="hidden items-center gap-7 md:flex">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className={cn(
-                  "text-sm font-semibold transition-colors px-2 py-1 rounded-md hover:text-amber-500",
-                  scrolled ? "text-foreground" : "text-white"
-                )}
+                className="text-sm font-bold text-slate-800 transition-colors px-2 py-1 rounded-md hover:text-amber-600"
               >
                 {l.label}
               </a>
@@ -101,12 +101,7 @@ export function Nav() {
             {/* Phone Number Display */}
             <a
               href="tel:+966536083965"
-              className={cn(
-                "flex items-center gap-2 text-xs sm:text-sm font-bold transition-colors px-3.5 py-1.5 rounded-full border",
-                scrolled
-                  ? "border-border text-foreground hover:text-amber-600 bg-accent/30"
-                  : "border-white/20 text-white hover:text-amber-400 bg-white/5"
-              )}
+              className="flex items-center gap-2 text-xs sm:text-sm font-bold transition-colors px-3.5 py-1.5 rounded-full border border-slate-300 text-slate-900 hover:text-amber-600 bg-slate-50 hover:bg-slate-100 shadow-sm"
             >
               <Phone className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
               <span>+966 53 608 3965</span>
@@ -129,10 +124,7 @@ export function Nav() {
           <div className="flex items-center gap-2 lg:hidden">
             <a
               href="tel:+966536083965"
-              className={cn(
-                "flex items-center gap-1.5 text-xs font-bold px-2.5 py-1.5 rounded-full border md:hidden",
-                scrolled ? "border-border text-foreground" : "border-white/20 text-white"
-              )}
+              className="flex items-center gap-1.5 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-50 shadow-sm md:hidden"
             >
               <Phone className="h-3 w-3 text-amber-500" />
               <span>Call</span>
@@ -153,35 +145,32 @@ export function Nav() {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className={cn(
-                    "h-10 w-10 border",
-                    scrolled ? "border-border text-foreground" : "border-white/20 text-white"
-                  )}
+                  className="h-10 w-10 border-slate-300 text-slate-900 bg-slate-50"
                   aria-label="Open navigation menu"
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6">
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6 bg-white text-slate-900">
                 <SheetHeader className="text-left mb-6">
                   <SheetTitle>
-                    <Logo size="sm" showTagline={true} />
+                    <Logo size="sm" showTagline={true} variant="light" />
                   </SheetTitle>
                   <div className="pt-2">
                     <Vision2030Badge />
                   </div>
                 </SheetHeader>
 
-                {/* 3 Navlinks for Mobile */}
+                {/* Navlinks for Mobile */}
                 <div className="flex flex-col gap-2 py-4">
                   {links.map((l) => (
                     <a
                       key={l.href}
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-bold text-foreground transition-colors hover:bg-accent"
+                      className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-bold text-slate-900 transition-colors hover:bg-slate-100"
                     >
                       <span>{l.label}</span>
                       <ChevronRight className="h-4 w-4 text-amber-500" />
@@ -193,7 +182,7 @@ export function Nav() {
                   {/* Phone Call Link */}
                   <Button
                     variant="outline"
-                    className="w-full gap-2 justify-center font-bold text-xs uppercase"
+                    className="w-full gap-2 justify-center font-bold text-xs uppercase border-slate-300 text-slate-900"
                     asChild
                   >
                     <a href="tel:+966536083965">

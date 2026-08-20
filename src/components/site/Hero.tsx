@@ -26,20 +26,19 @@ export function Hero() {
   const [pdfDialogOpen, setPdfDialogOpen] = useState(false);
 
   return (
-    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden bg-slate-950 text-white">
+    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden bg-slate-50 text-slate-900">
       {/* Background Hero Image */}
       <img
         src={heroImg}
         alt="Arzaq Express Industrial Plant Facilities in Dammam KSA"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
       />
       
-      {/* Premium Overlay Gradients */}
-      <div className="pointer-events-none absolute inset-0 bg-slate-950/75" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+      {/* Light Overlay Gradients */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/90 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-50 via-slate-50/70 to-transparent" />
 
-      <div className="relative mx-auto flex min-h-[100svh] w-full max-w-[1280px] flex-col justify-between px-4 pt-32 pb-12 sm:px-6 lg:px-8 lg:pt-40 lg:pb-16">
+      <div className="relative mx-auto flex min-h-[100svh] w-full max-w-[1280px] flex-col justify-between px-4 pt-32 pb-12 sm:px-6 lg:px-8 lg:pt-36 lg:pb-16">
         <div className="max-w-3xl">
           {/* Vision 2030 & Location Badges */}
           <motion.div
@@ -49,28 +48,29 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3 mb-6"
           >
             <Vision2030Badge />
-            <Badge variant="outline" className="border-white/20 bg-white/5 text-white/90 gap-1.5 py-1 px-3">
-              <MapPin className="h-3.5 w-3.5 text-amber-500" />
-              <span>Dammam & Jubail, Saudi Arabia</span>
+            <Badge variant="outline" className="border-slate-300 bg-white text-slate-800 gap-1.5 py-1 px-3 shadow-sm">
+              <MapPin className="h-3.5 w-3.5 text-amber-600" />
+              <span className="font-semibold">Dammam & Jubail, Saudi Arabia</span>
             </Badge>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline: "ARZAQ" in Orange (#F36F21), "EXPRESS Est." in Black (#000000) */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]"
+            className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]"
           >
-            ARZAQ EXPRESS <br />
-            <span className="text-amber-500">INDUSTRIAL Est.</span>
+            <span className="text-[#F36F21]">ARZAQ</span>{" "}
+            <span className="text-black">EXPRESS</span> <br />
+            <span className="text-black">Est.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed"
+            className="mt-5 text-base sm:text-lg text-slate-700 max-w-2xl leading-relaxed font-medium"
           >
             Delivering high-quality industrial services across Mechanical Engineering, Civil Construction, 
             Certified Welding & Fabrication, Electrical Systems, Instrumentation, Generator & Motor Overhaul, 
@@ -82,18 +82,18 @@ export function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
-            className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300"
+            className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-800 font-semibold"
           >
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0" />
+              <CheckCircle2 className="h-4 w-4 text-amber-600 shrink-0" />
               <span>Certified Technical Engineers & Welders</span>
             </div>
             <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-amber-500 shrink-0" />
+              <ShieldCheck className="h-4 w-4 text-amber-600 shrink-0" />
               <span>Oil & Gas, Petrochemical & Power Sectors</span>
             </div>
             <div className="flex items-center gap-2">
-              <Building2 className="h-4 w-4 text-amber-500 shrink-0" />
+              <Building2 className="h-4 w-4 text-amber-600 shrink-0" />
               <span>International Standards Compliance</span>
             </div>
           </motion.div>
@@ -107,7 +107,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="bg-amber-600 hover:bg-amber-700 text-white font-bold tracking-wide shadow-lg shadow-amber-600/20 gap-2 text-sm sm:text-base px-6 h-12"
+              className="bg-[#F36F21] hover:bg-orange-600 text-white font-bold tracking-wide shadow-lg shadow-orange-500/25 gap-2 text-sm sm:text-base px-6 h-12"
               asChild
             >
               <a href="#services">
@@ -121,24 +121,24 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 bg-slate-900/60 text-white hover:bg-white/10 hover:text-white font-semibold gap-2 text-sm sm:text-base px-6 h-12"
+                  className="border-slate-300 bg-white text-slate-900 hover:bg-slate-100 font-bold gap-2 text-sm sm:text-base px-6 h-12 shadow-sm"
                 >
-                  <FileText className="h-4 w-4 text-amber-400" />
+                  <FileText className="h-4 w-4 text-amber-600" />
                   <span>View Company Profile PDF</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl h-[85vh] p-4 flex flex-col bg-slate-950 border-slate-800 text-white">
+              <DialogContent className="max-w-4xl h-[85vh] p-4 flex flex-col bg-white text-slate-900 border-slate-200">
                 <DialogHeader className="mb-2">
-                  <DialogTitle className="text-xl font-bold flex items-center gap-2 text-amber-400">
+                  <DialogTitle className="text-xl font-bold flex items-center gap-2 text-[#F36F21]">
                     <FileText className="h-5 w-5" />
                     ARZAQ EXPRESS INDUSTRIAL Est. — Company Profile
                   </DialogTitle>
-                  <DialogDescription className="text-slate-400">
+                  <DialogDescription className="text-slate-600">
                     Official Company Profile (21 Pages). You can view below or download directly.
                   </DialogDescription>
                 </DialogHeader>
 
-                <div className="flex-1 w-full rounded-lg overflow-hidden border border-slate-800 bg-slate-900">
+                <div className="flex-1 w-full rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
                   <iframe
                     src="/business/profile.pdf"
                     title="Arzaq Express Industrial Est Profile PDF"
@@ -150,7 +150,7 @@ export function Hero() {
                   <Button variant="outline" size="sm" onClick={() => setPdfDialogOpen(false)}>
                     Close
                   </Button>
-                  <Button size="sm" className="bg-amber-600 hover:bg-amber-700 text-white gap-2" asChild>
+                  <Button size="sm" className="bg-[#F36F21] hover:bg-orange-600 text-white gap-2" asChild>
                     <a href="/business/profile.pdf" download="Arzaq_Express_Industrial_Est_Profile.pdf">
                       <FileText className="h-4 w-4" />
                       <span>Download PDF</span>
@@ -170,13 +170,13 @@ export function Hero() {
           className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
           {stats.map((m) => (
-            <Card key={m.l} className="border-white/10 bg-slate-900/60 backdrop-blur-md text-white shadow-xl">
+            <Card key={m.l} className="border-slate-200/80 bg-white/90 backdrop-blur-md text-slate-900 shadow-xl">
               <CardContent className="p-5">
-                <div className="font-display text-3xl sm:text-4xl font-extrabold text-amber-500">
+                <div className="font-display text-3xl sm:text-4xl font-extrabold text-[#F36F21]">
                   <Counter to={m.v} suffix={m.s} />
                 </div>
-                <div className="mt-2 font-semibold text-sm text-slate-100">{m.l}</div>
-                <div className="text-xs text-slate-400 mt-1">{m.l2}</div>
+                <div className="mt-2 font-bold text-sm text-slate-900">{m.l}</div>
+                <div className="text-xs text-slate-600 mt-1 font-medium">{m.l2}</div>
               </CardContent>
             </Card>
           ))}
