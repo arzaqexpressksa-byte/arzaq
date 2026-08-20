@@ -1,4 +1,4 @@
-import { useState } from "react";
+  import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, FileText, ShieldCheck, CheckCircle2, Building2, MapPin } from "lucide-react";
 import heroImg from "@/assets/hero-industrial.jpg";
@@ -19,7 +19,7 @@ import {
 const stats = [
   { v: 16, s: "+", l: "Core Industrial Services", l2: "Mechanical, Electrical, Civil & Fabrication" },
   { v: 100, s: "%", l: "Safety & Quality Standard", l2: "Compliant with International Codes" },
-  { v: 24, s: "/7", l: "On-Site Support", l2: "Serving Dammam, Jubail & Across KSA" },
+  { v: 24, s: "/7", l: "On-Site Support", l2: "Serving Dammam & Across KSA" },
 ];
 
 export function Hero() {
@@ -48,9 +48,9 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3 mb-6"
           >
             <Vision2030Badge />
-            <Badge variant="outline" className="border-slate-300 bg-white text-slate-800 gap-1.5 py-1 px-3 shadow-sm">
-              <MapPin className="h-3.5 w-3.5 text-amber-600" />
-              <span className="font-semibold">Dammam & Jubail, Saudi Arabia</span>
+            <Badge variant="outline" className="border-white/20 bg-white/5 text-white/90 gap-1.5 py-1 px-3">
+              <MapPin className="h-3.5 w-3.5 text-amber-500" />
+              <span>Dammam, Eastern Province, Saudi Arabia</span>
             </Badge>
           </motion.div>
 
@@ -74,7 +74,7 @@ export function Hero() {
           >
             Delivering high-quality industrial services across Mechanical Engineering, Civil Construction, 
             Certified Welding & Fabrication, Electrical Systems, Instrumentation, Generator & Motor Overhaul, 
-            and Materials Supply in Dammam, Jubail, and throughout the Kingdom of Saudi Arabia.
+            and Materials Supply. Serving Dammam & Across the Kingdom of Saudi Arabia.
           </motion.p>
 
           {/* Highlights Pills */}
@@ -131,7 +131,7 @@ export function Hero() {
                 <DialogHeader className="mb-2">
                   <DialogTitle className="text-xl font-bold flex items-center gap-2 text-[#F36F21]">
                     <FileText className="h-5 w-5" />
-                    ARZAQ EXPRESS INDUSTRIAL Est. — Company Profile
+                    ARZAQ EXPRESS Est. — Company Profile
                   </DialogTitle>
                   <DialogDescription className="text-slate-600">
                     Official Company Profile (21 Pages). You can view below or download directly.
@@ -141,7 +141,7 @@ export function Hero() {
                 <div className="flex-1 w-full rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
                   <iframe
                     src="/business/profile.pdf"
-                    title="Arzaq Express Industrial Est Profile PDF"
+                    title="Arzaq Express Est Profile PDF"
                     className="w-full h-full border-0"
                   />
                 </div>

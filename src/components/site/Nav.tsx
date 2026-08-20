@@ -44,11 +44,11 @@ export function WhatsAppIcon({ className = "h-6 w-6" }: { className?: string }) 
 export function FloatingWhatsAppButton() {
   return (
     <a
-      href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+      href="https://wa.me/966590316144?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20services."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      title="Chat on WhatsApp (+966 53 608 3965)"
+      title="Chat on WhatsApp (+966 59 031 6144)"
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-transform duration-300 hover:scale-110 hover:bg-[#20ba59] focus:outline-none ring-4 ring-emerald-400/30"
     >
       <WhatsAppIcon className="h-8 w-8" />
@@ -100,20 +100,25 @@ export function Nav() {
           <div className="hidden items-center gap-3 lg:flex">
             {/* Phone Number Display */}
             <a
-              href="tel:+966536083965"
-              className="flex items-center gap-2 text-xs sm:text-sm font-bold transition-colors px-3.5 py-1.5 rounded-full border border-slate-300 text-slate-900 hover:text-amber-600 bg-slate-50 hover:bg-slate-100 shadow-sm"
+              href="tel:+966590316144"
+              className={cn(
+                "flex items-center gap-2 text-xs sm:text-sm font-bold transition-colors px-3.5 py-1.5 rounded-full border",
+                scrolled
+                  ? "border-border text-foreground hover:text-amber-600 bg-accent/30"
+                  : "border-white/20 text-white hover:text-amber-400 bg-white/5"
+              )}
             >
               <Phone className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
-              <span>+966 53 608 3965</span>
+              <span>+966 59 031 6144</span>
             </a>
 
             {/* Single WhatsApp Icon Button (No full text) */}
             <a
-              href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+              href="https://wa.me/966590316144?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
-              title="Chat on WhatsApp (+966 53 608 3965)"
+              title="Chat on WhatsApp (+966 59 031 6144)"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md transition-transform duration-200 hover:scale-110 hover:bg-[#20ba59]"
             >
               <WhatsAppIcon className="h-6 w-6" />
@@ -123,8 +128,11 @@ export function Nav() {
           {/* Mobile Bar: Phone link, Single WhatsApp Icon & Menu Trigger */}
           <div className="flex items-center gap-2 lg:hidden">
             <a
-              href="tel:+966536083965"
-              className="flex items-center gap-1.5 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-50 shadow-sm md:hidden"
+              href="tel:+966590316144"
+              className={cn(
+                "flex items-center gap-1.5 text-xs font-bold px-2.5 py-1.5 rounded-full border md:hidden",
+                scrolled ? "border-border text-foreground" : "border-white/20 text-white"
+              )}
             >
               <Phone className="h-3 w-3 text-amber-500" />
               <span>Call</span>
@@ -132,11 +140,11 @@ export function Nav() {
 
             {/* Mobile Single WhatsApp Icon */}
             <a
-              href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+              href="https://wa.me/966590316144?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
-              title="Chat on WhatsApp"
+              title="Chat on WhatsApp (+966 59 031 6144)"
               className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md md:hidden"
             >
               <WhatsAppIcon className="h-5 w-5" />
@@ -185,9 +193,9 @@ export function Nav() {
                     className="w-full gap-2 justify-center font-bold text-xs uppercase border-slate-300 text-slate-900"
                     asChild
                   >
-                    <a href="tel:+966536083965">
+                    <a href="tel:+966590316144">
                       <Phone className="h-4 w-4 text-amber-500" />
-                      <span>Call: +966 53 608 3965</span>
+                      <span>Call: +966 59 031 6144</span>
                     </a>
                   </Button>
 
@@ -197,7 +205,7 @@ export function Nav() {
                     asChild
                   >
                     <a
-                      href="https://wa.me/966536083965?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20industrial%20services."
+                      href="https://wa.me/966590316144?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20services."
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setOpen(false)}

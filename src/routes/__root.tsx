@@ -78,11 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ARZAQ EXPRESS INDUSTRIAL Est. | Industrial Engineering & Contracting | KSA" },
+      { title: "ARZAQ EXPRESS Est. | Industrial Engineering & Contracting | KSA" },
       {
         name: "description",
         content:
-          "ARZAQ EXPRESS INDUSTRIAL Est., located in Dammam KSA, delivers high-quality industrial services across mechanical engineering, civil construction, welding, E&I, motor winding, and pump rentals.",
+          "ARZAQ EXPRESS Est., located in Dammam KSA, delivers high-quality industrial services across mechanical engineering, civil construction, welding, E&I, motor winding, and pump rentals.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -99,7 +99,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
-      { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "shortcut icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
   shellComponent: RootShell,

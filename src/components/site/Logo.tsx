@@ -49,7 +49,7 @@ export function Logo({
                 isDark ? "text-slate-300" : "text-slate-700"
               )}
             >
-              INDUSTRIAL Est.
+              EST.
             </span>
             <span className="h-0.5 w-2.5 bg-[#F36F21] rounded-full" />
           </div>
