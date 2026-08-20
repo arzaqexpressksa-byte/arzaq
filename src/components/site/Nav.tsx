@@ -101,14 +101,9 @@ export function Nav() {
             {/* Phone Number Display */}
             <a
               href="tel:+966590316144"
-              className={cn(
-                "flex items-center gap-2 text-xs sm:text-sm font-bold transition-colors px-3.5 py-1.5 rounded-full border",
-                scrolled
-                  ? "border-border text-foreground hover:text-amber-600 bg-accent/30"
-                  : "border-white/20 text-white hover:text-amber-400 bg-white/5"
-              )}
+              className="flex items-center gap-2 text-xs sm:text-sm font-extrabold transition-colors px-3.5 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-100 hover:bg-slate-200 hover:text-amber-600 shadow-sm"
             >
-              <Phone className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
+              <Phone className="h-3.5 w-3.5 text-amber-600 shrink-0" />
               <span>+966 59 031 6144</span>
             </a>
 
@@ -129,13 +124,10 @@ export function Nav() {
           <div className="flex items-center gap-2 lg:hidden">
             <a
               href="tel:+966590316144"
-              className={cn(
-                "flex items-center gap-1.5 text-xs font-bold px-2.5 py-1.5 rounded-full border md:hidden",
-                scrolled ? "border-border text-foreground" : "border-white/20 text-white"
-              )}
+              className="flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-100 hover:bg-slate-200 shadow-sm md:hidden"
             >
-              <Phone className="h-3 w-3 text-amber-500" />
-              <span>Call</span>
+              <Phone className="h-3.5 w-3.5 text-amber-600 shrink-0" />
+              <span>+966 59 031 6144</span>
             </a>
 
             {/* Mobile Single WhatsApp Icon */}
@@ -155,10 +147,10 @@ export function Nav() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="h-10 w-10 border-slate-300 text-slate-900 bg-slate-50"
+                  className="h-10 w-10 border-slate-300 text-slate-900 bg-slate-50 hover:bg-slate-100"
                   aria-label="Open navigation menu"
                 >
-                  <Menu className="h-5 w-5" />
+                  <Menu className="h-5 w-5 text-slate-900" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6 bg-white text-slate-900">
@@ -190,11 +182,11 @@ export function Nav() {
                   {/* Phone Call Link */}
                   <Button
                     variant="outline"
-                    className="w-full gap-2 justify-center font-bold text-xs uppercase border-slate-300 text-slate-900"
+                    className="w-full gap-2 justify-center font-bold text-xs uppercase border-slate-300 text-slate-900 bg-slate-50"
                     asChild
                   >
                     <a href="tel:+966590316144">
-                      <Phone className="h-4 w-4 text-amber-500" />
+                      <Phone className="h-4 w-4 text-amber-600" />
                       <span>Call: +966 59 031 6144</span>
                     </a>
                   </Button>

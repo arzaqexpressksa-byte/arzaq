@@ -1,4 +1,4 @@
-  import { useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, FileText, ShieldCheck, CheckCircle2, Building2, MapPin } from "lucide-react";
 import heroImg from "@/assets/hero-industrial.jpg";
@@ -33,7 +33,7 @@ export function Hero() {
         alt="Arzaq Express Industrial Plant Facilities in Dammam KSA"
         className="absolute inset-0 h-full w-full object-cover object-center opacity-25"
       />
-      
+
       {/* Light Overlay Gradients */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/90 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-50 via-slate-50/70 to-transparent" />
@@ -48,9 +48,9 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3 mb-6"
           >
             <Vision2030Badge />
-            <Badge variant="outline" className="border-white/20 bg-white/5 text-white/90 gap-1.5 py-1 px-3">
+            <Badge variant="outline" className="border-white/20 bg-white/5 text-white/90 gap-1.5 py-1 px-3 ">
               <MapPin className="h-3.5 w-3.5 text-amber-500" />
-              <span>Dammam, Eastern Province, Saudi Arabia</span>
+              <span className="text-black">Dammam, Eastern Province, Saudi Arabia</span>
             </Badge>
           </motion.div>
 
@@ -72,8 +72,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 text-base sm:text-lg text-slate-700 max-w-2xl leading-relaxed font-medium"
           >
-            Delivering high-quality industrial services across Mechanical Engineering, Civil Construction, 
-            Certified Welding & Fabrication, Electrical Systems, Instrumentation, Generator & Motor Overhaul, 
+            Delivering high-quality industrial services across Mechanical Engineering, Civil Construction,
+            Certified Welding & Fabrication, Electrical Systems, Instrumentation, Generator & Motor Overhaul,
             and Materials Supply. Serving Dammam & Across the Kingdom of Saudi Arabia.
           </motion.p>
 
