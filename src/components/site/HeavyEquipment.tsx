@@ -426,7 +426,7 @@ export function HeavyEquipment() {
         <SectionHeading
           eyebrow="Fleet & Equipment"
           title="Heavy Equipment Availability"
-          intro="ABDULWAHAB AWAD HASSAN AAIYSH EST. / ARZAQ EXPRESS maintains a comprehensive fleet of 20 heavy equipment, earthmoving machinery, lifting cranes, compaction rollers, and power tools for immediate project deployment across KSA."
+          intro="ARZAQ EXPRESS INDUSTRIAL Est. maintains a comprehensive fleet of 20 heavy equipment, earthmoving machinery, lifting cranes, compaction rollers, and power tools for immediate project deployment across KSA."
           invert
         />
 
@@ -551,7 +551,7 @@ export function HeavyEquipment() {
                             <Badge variant="outline" className="border-amber-500/40 text-amber-400 bg-amber-500/10 text-xs font-bold">
                               #{selectedEquipment.num} · {selectedEquipment.category}
                             </Badge>
-                            <span className="text-xs text-slate-400">ABDULWAHAB AWAD HASSAN AAIYSH EST. Fleet</span>
+                            <span className="text-xs text-slate-400">ARZAQ EXPRESS Heavy Equipment Availability</span>
                           </div>
                           <DialogTitle className="text-lg sm:text-2xl font-bold text-amber-400 mt-2">
                             {selectedEquipment.name}

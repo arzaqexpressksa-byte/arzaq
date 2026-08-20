@@ -11,14 +11,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-// EXACT 3 NAVLINKS + SECTIONS
+// ALL NAVLINKS WITH ROUTE SUPPORT
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Scaffolding & Towers", href: "#scaffolding" },
-  { label: "Heavy Equipment", href: "#equipment" },
-  { label: "Contact us", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Scaffolding, Towers & Ladders", href: "/#scaffolding" },
+  { label: "Heavy Equipment Availability", href: "/#equipment" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact us", href: "/#contact" },
 ];
 
 export function WhatsAppIcon({ className = "h-6 w-6" }: { className?: string }) {
@@ -78,36 +79,24 @@ export function Nav() {
         )}
       >
         <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo with Light Background */}
-          <a href="#home" className="group focus:outline-none">
+          {/* Logo */}
+          <a href="/#home" className="group focus:outline-none">
             <Logo variant="light" size="md" />
           </a>
 
-          {/* Navlinks */}
-          <nav className="hidden items-center gap-7 md:flex">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm font-bold text-slate-800 transition-colors px-2 py-1 rounded-md hover:text-amber-600"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop Right Side: Display Phone Number & Single WhatsApp Icon */}
-          <div className="hidden items-center gap-3 lg:flex">
+          {/* Right Controls: Phone Number, WhatsApp Icon & Universal Hamburger Menu */}
+          <div className="flex items-center gap-3">
             {/* Phone Number Display */}
             <a
               href="tel:+966590316144"
-              className="flex items-center gap-2 text-xs sm:text-sm font-extrabold transition-colors px-3.5 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-100 hover:bg-slate-200 hover:text-amber-600 shadow-sm"
+              className="flex items-center gap-2 text-xs sm:text-sm font-extrabold transition-colors px-3.5 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-100 hover:bg-slate-200 hover:text-[#F36F21] shadow-sm"
             >
-              <Phone className="h-3.5 w-3.5 text-amber-600 shrink-0" />
-              <span>+966 59 031 6144</span>
+              <Phone className="h-3.5 w-3.5 text-[#F36F21] shrink-0 animate-pulse" />
+              <span className="hidden xs:inline">+966 59 031 6144</span>
+              <span className="xs:hidden">Call</span>
             </a>
 
-            {/* Single WhatsApp Icon Button (No full text) */}
+            {/* Single WhatsApp Icon Button */}
             <a
               href="https://wa.me/966590316144?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20services."
               target="_blank"
@@ -118,82 +107,62 @@ export function Nav() {
             >
               <WhatsAppIcon className="h-6 w-6" />
             </a>
-          </div>
 
-          {/* Mobile Bar: Phone link, Single WhatsApp Icon & Menu Trigger */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <a
-              href="tel:+966590316144"
-              className="flex items-center gap-1.5 text-xs font-extrabold px-3 py-1.5 rounded-full border border-slate-300 text-slate-900 bg-slate-100 hover:bg-slate-200 shadow-sm md:hidden"
-            >
-              <Phone className="h-3.5 w-3.5 text-amber-600 shrink-0" />
-              <span>+966 59 031 6144</span>
-            </a>
-
-            {/* Mobile Single WhatsApp Icon */}
-            <a
-              href="https://wa.me/966590316144?text=Hello%20Arzaq%20Express,%20I%20would%20like%20to%20inquire%20about%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp"
-              title="Chat on WhatsApp (+966 59 031 6144)"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md md:hidden"
-            >
-              <WhatsAppIcon className="h-5 w-5" />
-            </a>
-
+            {/* Universal Hamburger Menu Button (Laptops, Desktops, Tablets & Mobile) */}
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
                   size="icon"
-                  className="h-10 w-10 border-slate-300 text-slate-900 bg-slate-50 hover:bg-slate-100"
+                  className="h-10 w-10 border-slate-300 text-slate-900 bg-slate-100 hover:bg-slate-200 hover:border-[#F36F21] shadow-sm"
                   aria-label="Open navigation menu"
                 >
                   <Menu className="h-5 w-5 text-slate-900" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px] p-6 bg-white text-slate-900">
-                <SheetHeader className="text-left mb-6">
-                  <SheetTitle>
-                    <Logo size="sm" showTagline={true} variant="light" />
-                  </SheetTitle>
-                  <div className="pt-2">
-                    <Vision2030Badge />
-                  </div>
-                </SheetHeader>
+              <SheetContent side="right" className="w-[300px] sm:w-[360px] p-6 bg-white text-slate-900 flex flex-col justify-between">
+                <div>
+                  <SheetHeader className="text-left mb-6">
+                    <SheetTitle>
+                      <Logo size="sm" showTagline={true} variant="light" />
+                    </SheetTitle>
+                    <div className="pt-2">
+                      <Vision2030Badge />
+                    </div>
+                  </SheetHeader>
 
-                {/* Navlinks for Mobile */}
-                <div className="flex flex-col gap-2 py-4">
-                  {links.map((l) => (
-                    <a
-                      key={l.href}
-                      href={l.href}
-                      onClick={() => setOpen(false)}
-                      className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-bold text-slate-900 transition-colors hover:bg-slate-100"
-                    >
-                      <span>{l.label}</span>
-                      <ChevronRight className="h-4 w-4 text-amber-500" />
-                    </a>
-                  ))}
+                  {/* Navlinks in Side Drawer */}
+                  <div className="flex flex-col gap-1.5 py-2">
+                    {links.map((l) => (
+                      <a
+                        key={l.href}
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        className="flex items-center justify-between rounded-xl px-4 py-3 text-sm sm:text-base font-bold text-slate-900 transition-colors hover:bg-slate-100 hover:text-[#F36F21] group"
+                      >
+                        <span>{l.label}</span>
+                        <ChevronRight className="h-4 w-4 text-amber-500 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="mt-6 flex flex-col gap-3">
+                <div className="pt-4 flex flex-col gap-2.5 border-t border-slate-200">
                   {/* Phone Call Link */}
                   <Button
                     variant="outline"
-                    className="w-full gap-2 justify-center font-bold text-xs uppercase border-slate-300 text-slate-900 bg-slate-50"
+                    className="w-full gap-2 justify-center font-bold text-xs uppercase border-slate-300 text-slate-900 bg-slate-50 h-11 rounded-xl"
                     asChild
                   >
                     <a href="tel:+966590316144">
-                      <Phone className="h-4 w-4 text-amber-600" />
+                      <Phone className="h-4 w-4 text-[#F36F21]" />
                       <span>Call: +966 59 031 6144</span>
                     </a>
                   </Button>
 
-                  {/* Single WhatsApp Icon Row Link for Mobile Drawer */}
+                  {/* WhatsApp Direct Chat Button */}
                   <Button
-                    className="w-full gap-2 justify-center bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase shadow"
+                    className="w-full gap-2 justify-center bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase shadow h-11 rounded-xl"
                     asChild
                   >
                     <a
@@ -209,7 +178,7 @@ export function Nav() {
 
                   <Button
                     variant="secondary"
-                    className="w-full gap-2 justify-center font-semibold text-xs"
+                    className="w-full gap-2 justify-center font-semibold text-xs h-10 rounded-xl"
                     asChild
                   >
                     <a
@@ -218,7 +187,7 @@ export function Nav() {
                       rel="noopener noreferrer"
                       onClick={() => setOpen(false)}
                     >
-                      <FileText className="h-4 w-4 text-amber-500" />
+                      <FileText className="h-4 w-4 text-[#F36F21]" />
                       <span>Company Profile PDF</span>
                     </a>
                   </Button>

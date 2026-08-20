@@ -264,7 +264,7 @@ export const allServices = [
     category: "Specialized Services",
     summary: "Safe, controlled structural and industrial demolition, selective interior strip-outs, concrete cutting, and hazardous debris clearance.",
     details: [
-      "Structural & industrial building demolition (Abdulwahab Awad Hassan Aaiysh Est.)",
+      "Structural & industrial building demolition & plant dismantling",
       "Selective interior dismantling for commercial spaces",
       "Heavy concrete breaking, cutting & foundation excavation",
       "Site clearance, debris hauling & compliant eco-disposal",
